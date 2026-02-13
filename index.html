@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Best Version | Self-Growth Planner</title>
+    <style>
+        /* Classic & Neutral Styling */
+        body {
+            background-color: #fdfaf5; /* Cream */
+            color: #333333; /* Charcoal */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: #ffffff;
+            padding: 40px;
+            border: 1px solid #e0ddd5;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-style: italic;
+            color: #5d5c58;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #d1cec7;
+            background-color: #faf9f6;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #5d5c58;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        #plan-output {
+            margin-top: 30px;
+            text-align: left;
+            border-top: 1px solid #e0ddd5;
+            padding-top: 20px;
+            display: none;
+        }
+
+        .step-item {
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #8c7b6c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Become your best self.</h1>
+    
+    <div id="input-section">
+        <label for="userGoal">What is the ultimate goal you wish to achieve?</label>
+        <textarea id="userGoal" rows="4" placeholder="e.g., I want to become a healthier person and write a book..."></textarea>
+        <br>
+        <button onclick="generatePlan()">Create My Plan</button>
+    </div>
+
+    <div id="plan-output">
+        <h2 style="font-weight: normal;">Your Path Forward</h2>
+        <div id="plan-content"></div>
+        <button onclick="resetPage()" style="margin-top: 20px; background: none; color: #999; text-decoration: underline;">Start over</button>
+    </div>
+</div>
+
+<script>
+    function generatePlan() {
+        const goal = document.getElementById('userGoal').value;
+        if (!goal) {
+            alert("Please share your goal first.");
+            return;
+        }
+
+        const content = document.getElementById('plan-content');
+        const output = document.getElementById('plan-output');
+        const inputSection = document.getElementById('input-section');
+
+        // Simple logic to create a "structured" plan from their text
+        content.innerHTML = `
+            <div class="step-item">
+                <span class="step-title">Phase 1: Foundations</span>
+                <p>Start by breaking "${goal}" into micro-habits. Dedicate the first 15 minutes of your morning to one small action related to this goal.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-title">Phase 2: Consistency</span>
+                <p>Establish a "No-Zero Day" policy. Even if you only spend 5 minutes on your goal, never let a day pass without progress.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-title">Phase 3: Refinement</span>
+                <p>Every Sunday, review your progress. Adjust your environment to remove distractions that hinder your path to being your best self.</p>
+            </div>
+            <p><em>Keep focus. Growth is a slow, beautiful process.</em></p>
+        `;
+
+        inputSection.style.display = 'none';
+        output.style.display = 'block';
+    }
+
+    function resetPage() {
+        location.reload();
+    }
+</script>
+
+</body>
+</html>
